@@ -1,0 +1,14 @@
+<header class="sticky">
+  <a routerLink="new"
+     class="button"> <span>New</span> </a>
+</header>
+<section>
+  <label for="namefilter">Name Filter</label>
+  <input name="namefilter"
+         type="text"
+         [(ngModel)]="nameFilter"
+         placeholder="write the name for search" />
+  <input value="Search"
+         type="submit"
+         (click)="send()" />
+</section>

@@ -1,0 +1,8 @@
+<app-dashboard [numProjects]="numProjects"
+               [header]="header"></app-dashboard>
+<app-filter-projects-form [nameFilter]="nameFilter"
+                          (eventFilter)="onFilter($event)"></app-filter-projects-form>
+<app-projects-list [projects]='projects'
+                   [description]="description"></app-projects-list>
+<app-filter-projects-form [nameFilter]="nameFilter"
+                          (eventFilter)="onFilter($event)"></app-filter-projects-form>

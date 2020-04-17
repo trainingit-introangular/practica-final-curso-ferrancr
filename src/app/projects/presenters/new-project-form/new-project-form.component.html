@@ -1,0 +1,27 @@
+<div *ngIf="isNew; else saved">
+  <form>
+    <fieldset>
+      <legend>Project Form</legend>
+      <section>
+        <label for="id">ID</label>
+        <input name="id"
+               type="text"
+               [(ngModel)]="project.id"
+               placeholder="Project ID" />
+      </section>
+      <section>
+        <label for="name">Name</label>
+        <input name="name"
+               type="text"
+               [(ngModel)]="project.name"
+               placeholder="Project name" />
+      </section>
+      <input value="New"
+             type="submit"
+             (click)="new()" />
+    </fieldset>
+  </form>
+</div>
+<ng-template #saved>
+  The {{project.id}} is saved. Go To <a routerLink="/projects">List of projects</a>
+</ng-template>
