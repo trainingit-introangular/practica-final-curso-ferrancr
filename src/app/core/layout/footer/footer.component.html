@@ -1,1 +1,4 @@
-<p>footer works!</p>
+<h2>Notes receiver</h2>
+<ul>
+  <li *ngFor="let note of notes$ | async">{{ note | json }}</li>
+</ul>

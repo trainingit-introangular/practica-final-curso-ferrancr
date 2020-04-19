@@ -1,4 +1,4 @@
 <p>{{ description }}</p>
 <ul>
-  <li *ngFor="let prj of projects$ | async "><a routerLink="view/{{ prj.id }}"> <span> {{ prj.name }} </span> </a> </li>
+  <li *ngFor="let prj of projects"><a routerLink="view/{{ prj.id }}"> <span> {{ prj.name }} </span> </a> </li>
 </ul>

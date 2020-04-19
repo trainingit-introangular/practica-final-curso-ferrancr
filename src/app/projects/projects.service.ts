@@ -43,7 +43,7 @@ export class ProjectsService {
     return this.projects$.pipe(
       map(apiData => {
         if (apiData) {
-          console.log("Projects", apiData);
+          // console.log("Projects", apiData);
           return apiData.filter(c => c.name.search(nameFilter) >= 0);
         }
       })
@@ -62,7 +62,7 @@ export class ProjectsService {
       return this.projects$.pipe(
         map(apiData => {
           const data = apiData.filter(c => {
-            console.log("element", c);
+            // console.log("element", c);
             return c.id === id;
           });
           // console.log("filtrada", data);

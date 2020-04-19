@@ -1,7 +1,8 @@
 import { CommonModule } from "@angular/common";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
+import { InterceptorService } from "./interceptor.service";
 import { NewprojectComponent } from "./newproject/newproject.component";
 import { DashboardComponent } from "./presenters/dashboard/dashboard.component";
 import { FilterProjectsFormComponent } from "./presenters/filter-projects-form/filter-projects-form.component";
@@ -24,6 +25,12 @@ import { ViewerprojectComponent } from "./viewerproject/viewerproject.component"
     NewProjectFormComponent
   ],
   imports: [CommonModule, ProjectsRoutingModule, FormsModule, HttpClientModule],
-  providers: []
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
+  ]
 })
 export class ProjectsModule {}
