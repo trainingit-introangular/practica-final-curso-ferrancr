@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { Observable } from "rxjs";
 import { Project } from "../models/project.model";
 import { ProjectsService } from "../projects.service";
 @Component({
@@ -9,7 +10,8 @@ import { ProjectsService } from "../projects.service";
 })
 export class ViewerprojectComponent implements OnInit {
   public projectId: number;
-  public theProject: Project;
+  public project: Project;
+  public project$: Observable<any> = null;
 
   constructor(
     activateRoute: ActivatedRoute,
@@ -18,6 +20,12 @@ export class ViewerprojectComponent implements OnInit {
     this.projectId = activateRoute.snapshot.params["id"];
   }
   ngOnInit(): void {
-    this.theProject = this.projectsService.getProject(this.projectId);
+    if (this.projectsService.isRemote()) {
+      this.project = null;
+      this.project$ = this.projectsService.getProjectRemote(this.projectId);
+    } else {
+      this.project = this.projectsService.getProject(this.projectId);
+      this.project$ = null;
+    }
   }
 }

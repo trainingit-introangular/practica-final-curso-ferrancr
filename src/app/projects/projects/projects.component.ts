@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Project } from "../models/project.model";
+import { Observable } from "rxjs";
 import { ProjectsService } from "../projects.service";
 
 @Component({
@@ -10,20 +10,18 @@ import { ProjectsService } from "../projects.service";
 export class ProjectsComponent implements OnInit {
   public header = "Projects";
   public description = "List of projects";
-  public projects: Project[];
+  public projects$: Observable<any> = null;
   public numProjects: number;
   public nameFilter: string;
 
   constructor(private projectsService: ProjectsService) {}
 
   ngOnInit(): void {
-    this.projects = this.projectsService.projects;
-    this.numProjects = this.projects.length;
+    this.onFilter("");
+    //  this.numProjects = this.projects.length;
   }
   onFilter(nameFilter: string) {
     this.nameFilter = nameFilter;
-    this.projects = this.projectsService.projects.filter(
-      c => c.name.search(nameFilter) >= 0
-    );
+    this.projects$ = this.projectsService.getProjects(nameFilter);
   }
 }
