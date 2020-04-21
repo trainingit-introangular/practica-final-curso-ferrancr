@@ -3,7 +3,7 @@
   "version": "3.0.0",
   "scripts": {
     "build:prod": "ng build --prod",
-    "build:pub": "ng build --prod --output-path docs --base-href https://trainingit-introangular-ed3.github.io/training-projects/",
+    "build:pub": "ng build --prod --output-path docs --base-href https://github.com/trainingit-introangular/practica-final-curso-ferrancr",
     "e2e": "ng e2e",
     "lint": "ng lint",
     "ng": "ng",

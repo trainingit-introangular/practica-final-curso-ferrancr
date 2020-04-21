@@ -1,24 +1,27 @@
 <div *ngIf="isNew; else saved">
-  <form>
+  <form [formGroup]="formModel">
     <fieldset>
       <legend>Project Form</legend>
       <section>
         <label for="id">ID</label>
         <input name="id"
                type="text"
-               [(ngModel)]="project.id"
+               formControlName="id"
                placeholder="Project ID" />
+        <span>{{ getError('id')}}</span>
       </section>
       <section>
         <label for="name">Name</label>
         <input name="name"
                type="text"
-               [(ngModel)]="project.name"
+               formControlName="name"
                placeholder="Project name" />
+        <span>{{ getError('name')}}</span>
       </section>
       <input value="New"
              type="submit"
-             (click)="new()" />
+             (click)="new()"
+             [disabled]="formModel.invalid" />
     </fieldset>
   </form>
 </div>
