@@ -1,4 +1,5 @@
 export const environment = {
+  appName: "Training Projects",
   production: true,
   projects: [
     { id: 0, name: "Learn Angular" },
